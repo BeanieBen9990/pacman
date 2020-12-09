@@ -17,9 +17,11 @@ public class PacManage extends JFrame implements Runnable, KeyListener
     double scale;
     public PacManage()
     {
-        p = new PackMann(400, 400);
+        p = new PackMann(600, 600);
         ghosts.add(new Ghosts(100,100));
         ghosts.add(new Ghosts(400,400));
+        //ghosts.add(new Ghosts(100,100));
+        //ghosts.add(new Ghosts(400,400));
         coins.add(new GoldCoin(70, 70));
         coins.add(new GoldCoin(100, 70));
         coins.add(new GoldCoin(130, 70));
@@ -88,9 +90,15 @@ public class PacManage extends JFrame implements Runnable, KeyListener
                         }
                     }
                 }
-                /*for(int y = 0; y < ghosts.size(); y++) {
+                for(int y = 0; y < ghosts.size(); y++) {
                     ghosts.get(y).move();
-                }*/
+                }
+                for(int y = 0; y < ghosts.size(); y++) {
+                    if(ghosts.get(y).getR().intersects(p.getR())) {
+                        System.exit(0);
+                    }
+
+                }
 
                 if (p.getR().getX() < 0 || p.getR().getX() > 600) {
                     p.wrapAround();
