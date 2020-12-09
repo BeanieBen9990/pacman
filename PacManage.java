@@ -18,19 +18,19 @@ public class PacManage extends JFrame implements Runnable, KeyListener
     int coinOffset = 7;
     int ghostOffset = 0;
     int gridMultiplier = 25;
+    double scale;
     public PacManage()
     {
-
         p = new PackMann(((13)*gridMultiplier)+xOffset, ((17)*gridMultiplier)+yOffset);
-        /* add ghost objects */
-        ghosts.add(new Ghosts(((13)*gridMultiplier)+xOffset, ((13)*gridMultiplier)+yOffset));
-
-        /* add coin objects */
-/*
-        for (int i = 1; i <= 12; i++) {
-            addCoin(1, i);
-        }
-*/
+        //add ghost objects
+        //please add ghosts with fitting size and position, as determined by the below instantiation */
+        
+        ghosts.add(new Ghosts(((11)*gridMultiplier)+xOffset, ((11)*gridMultiplier)+yOffset));
+        ghosts.add(new Ghosts(100,100));
+        //ghosts.add(new Ghosts(400,400));
+        //ghosts.add(new Ghosts(100,100));
+        //ghosts.add(new Ghosts(400,400));
+        
         for (int i = 2; i <= 8; i++) {
             coins.add(new GoldCoin(((1)*gridMultiplier)+xOffset+coinOffset, ((i)*gridMultiplier)+yOffset+coinOffset));
         }
@@ -41,7 +41,7 @@ public class PacManage extends JFrame implements Runnable, KeyListener
             coins.add(new GoldCoin(((6)*gridMultiplier)+xOffset+coinOffset, ((i)*gridMultiplier)+yOffset+coinOffset));
         }
 
-        /* add barrier objects  */
+        // add barrier objects
         barriers.add(new Rectangle(((0)*gridMultiplier)+xOffset,  ((0)*gridMultiplier)+yOffset,  (28)*gridMultiplier, (1)*gridMultiplier));
         barriers.add(new Rectangle(((0)*gridMultiplier)+xOffset,  ((0)*gridMultiplier)+yOffset,  (1)*gridMultiplier,  (10)*gridMultiplier));
         barriers.add(new Rectangle(((27)*gridMultiplier)+xOffset, ((0)*gridMultiplier)+yOffset,  (1)*gridMultiplier,  (10)*gridMultiplier));
@@ -93,6 +93,10 @@ public class PacManage extends JFrame implements Runnable, KeyListener
         barriers.add(new Rectangle(((19)*gridMultiplier)+xOffset,  ((24)*gridMultiplier)+yOffset, (2)*gridMultiplier,  (5)*gridMultiplier));
         barriers.add(new Rectangle(((16)*gridMultiplier)+xOffset,  ((27)*gridMultiplier)+yOffset, (10)*gridMultiplier, (2)*gridMultiplier));
 
+
+
+        scale = .5; 
+
         con.setLayout(new FlowLayout());
         addKeyListener(this);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -106,10 +110,8 @@ public class PacManage extends JFrame implements Runnable, KeyListener
             {
                 t.sleep(33);//Smaller number == faster, larger == slower
                 p.move();
-                for(int x = 0; x < coins.size(); x++)
-                {
-                    if(p.getR().intersects(coins.get(x).getR()))
-                    {
+                for(int x = 0; x < coins.size(); x++) {
+                    if(p.getR().intersects(coins.get(x).getR())) {
                         coins.get(x).eatCoin();
                     }
                 }
@@ -119,6 +121,23 @@ public class PacManage extends JFrame implements Runnable, KeyListener
                     }
                 }
                 if (p.getR().getX() < 0 || p.getR().getX() > 750) {
+                    for(int x = 0; x < barriers.size(); x++) {
+                        for(int y = 0; y < ghosts.size(); y++) {
+                            if(ghosts.get(y).getR().intersects(barriers.get(x))) {
+                                ghosts.get(y).wallGhost();
+                            }
+                        }
+                    }
+                }
+                for(int y = 0; y < ghosts.size(); y++) {
+                    ghosts.get(y).move();
+                }
+                for(int y = 0; y < ghosts.size(); y++) {
+                    if(ghosts.get(y).getR().intersects(p.getR())) {
+                        System.exit(0);
+                    }
+                }
+                if (p.getR().getX() < 0 || p.getR().getX() > 600) {
                     p.wrapAround();
                 }
                 repaint();
@@ -129,6 +148,16 @@ public class PacManage extends JFrame implements Runnable, KeyListener
             e.printStackTrace();
         }
     }
+
+    /*
+    public void addCoin(int xCells, int yCells) {
+    for(int coin = 0; coin < coins.size(); coin++) { 
+    if (!(coins.get(coin).equals(GoldCoin(((xCells)*gridMultiplier)+xOffset+coinOffset, ((yCells)*gridMultiplier)+yOffset+coinOffset)))) {
+    coins.add(new GoldCoin(((xCells)*gridMultiplier)+xOffset+coinOffset, ((yCells)*gridMultiplier)+yOffset+coinOffset));
+    }
+    }
+    }
+     */
 
     public void paint(Graphics gr)
     {
@@ -145,25 +174,15 @@ public class PacManage extends JFrame implements Runnable, KeyListener
         {
             painter.draw(barriers.get(x));
         }
-
         for(int x = 0; x < ghosts.size(); x++)
         {           
             ghosts.get(x).drawGhosts(painter);       
         }    
-
         p.drawPacMan(painter);
         painter.dispose();
         gr.drawImage(i, 0, 0, this);
     }
-/*
-    public void addCoin(int xCells, int yCells) {
-        for(int coin = 0; coin < coins.size(); coin++) { 
-            if (!(coins.get(coin).equals(GoldCoin(((xCells)*gridMultiplier)+xOffset+coinOffset, ((yCells)*gridMultiplier)+yOffset+coinOffset)))) {
-                coins.add(new GoldCoin(((xCells)*gridMultiplier)+xOffset+coinOffset, ((yCells)*gridMultiplier)+yOffset+coinOffset));
-            }
-        }
-    }
-*/
+
     public static void main(String[] args)
     {
         PacManage frame = new PacManage();
