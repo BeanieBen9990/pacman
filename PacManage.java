@@ -128,6 +128,7 @@ public class PacManage extends JFrame implements Runnable, KeyListener
                         }
                     }
                 }
+                
                 for(int y = 0; y < ghosts.size(); y++) {
                     ghosts.get(y).move();
                 }
@@ -138,11 +139,13 @@ public class PacManage extends JFrame implements Runnable, KeyListener
                 }
                 for(int x = 0; x < barriers.size(); x++) {
                     for(int y = 0; y < ghosts.size(); y++) {
-                        if(ghosts.get(y).getR().intersects(barriers.get(x))) {
+                        if(ghosts.get(y).getR().intersects(barriers.get(x))) 
+                        {
                             ghosts.get(y).wallGhost();
                         }
                     }
                 }
+                
                 if (p.getR().getX() < 0 || p.getR().getX() > 600) {
                     p.wrapAround();
                 }

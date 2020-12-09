@@ -9,26 +9,27 @@ public class Ghosts
 {
     private Color c;    
     private int x, y, xv, yv;   
-    int ran;
+    int ran, ran1;
     private Rectangle r;  
     public Ghosts(int xx, int yy)
     {  
         c = new Color((int)(Math.random()*(216)+39),(int)(Math.random()*(216)+39),(int)(Math.random()*(216)+39)); 
         x = xx;  
         y = yy;    
-        ran = (int)(Math.random()*(10)+5);
+        ran = (int)(Math.random()*(100)+5);
+        
         if(ran % 2 ==0)
         { 
-            xv = (int)(Math.random()*11)-5;
+            xv = (int)(Math.random()*21)-10;
             yv = 0;
         }
         else
         {        
-            yv = (int)(Math.random()*11)-5;
+            yv = (int)(Math.random()*21)-10;
             xv = 0;
         }     
 
-        r = new Rectangle(x-50, y, 140, 130);
+        r = new Rectangle(x-4, y+1, 13, 12);
     }
 
     public Rectangle getR()  
@@ -39,93 +40,93 @@ public class Ghosts
     public void drawGhosts(Graphics2D gr)    
     {
         gr.setColor(c);   
-        gr.fillRect(x, y, 30, 10);
-        gr.fillRect(x-20, y+10, 70, 10);
-        gr.fillRect(x-30, y+20, 90, 10);
+        gr.fillRect(x, y, 3, 1);
+        gr.fillRect(x-2, y+1, 7, 1);
+        gr.fillRect(x-3, y+2, 9, 1);
         if(xv>0){
-            gr.fillRect(x-40, y+30, 40, 10);
+            gr.fillRect(x-4, y+3, 4, 1);
             gr.setColor(Color.white);
-            gr.fillRect(x, y+30, 20, 10);
+            gr.fillRect(x, y+3, 2, 1);
             gr.setColor(c);   
-            gr.fillRect(x+20, y+30, 40, 10);
+            gr.fillRect(x+2, y+3, 4, 1);
             gr.setColor(Color.white);
-            gr.fillRect(x+60, y+30, 20, 10);
+            gr.fillRect(x+6, y+3, 2, 1);
             gr.setColor(c);   
-            gr.fillRect(x-40, y+40, 30, 10);
+            gr.fillRect(x-4, y+4, 3, 1);
             gr.setColor(Color.white);
-            gr.fillRect(x-10, y+40, 10, 10);
+            gr.fillRect(x-1, y+4, 1, 1);
             gr.setColor(Color.blue);
-            gr.fillRect(x, y+40, 20, 10);
-            gr.setColor(c);   gr.fillRect(x+20, y+40, 30, 10);
+            gr.fillRect(x, y+4, 2, 1);
+            gr.setColor(c);   gr.fillRect(x+2, y+4, 3, 1);
             gr.setColor(Color.white);
-            gr.fillRect(x+50, y+40, 10, 10);
+            gr.fillRect(x+5, y+4, 1, 1);
             gr.setColor(Color.blue);
-            gr.fillRect(x+60, y+40, 20, 10);
-            gr.setColor(c);   gr.fillRect(x-40, y+50, 30, 10);
+            gr.fillRect(x+6, y+4, 2, 1);
+            gr.setColor(c);   gr.fillRect(x-4, y+5, 3, 1);
             gr.setColor(Color.white);
-            gr.fillRect(x-10, y+50, 10, 10);
+            gr.fillRect(x-1, y+5, 1, 1);
             gr.setColor(Color.blue);
-            gr.fillRect(x, y+50, 20, 10);
-            gr.setColor(c);   gr.fillRect(x+20, y+50, 30, 10);
+            gr.fillRect(x, y+5, 2, 1);
+            gr.setColor(c);   gr.fillRect(x+2, y+5, 3, 1);
             gr.setColor(Color.white);
-            gr.fillRect(x+50, y+50, 10, 10);
+            gr.fillRect(x+5, y+5, 1, 1);
             gr.setColor(Color.blue);
-            gr.fillRect(x+60, y+50, 20, 10);   
-            gr.setColor(c);   gr.fillRect(x+80, y+50, 10, 80);     
+            gr.fillRect(x+6, y+5, 2, 1);   
+            gr.setColor(c);   gr.fillRect(x+8, y+5, 1, 8);     
 
-            gr.setColor(c);   gr.fillRect(x-50, y+60, 50, 10);
+            gr.setColor(c);   gr.fillRect(x-5, y+6, 5, 1);
             gr.setColor(Color.white);
-            gr.fillRect(x, y+60, 20, 10);
-            gr.setColor(c);   gr.fillRect(x+20, y+60, 40, 10);
+            gr.fillRect(x, y+6, 2, 1);
+            gr.setColor(c);   gr.fillRect(x+2, y+6, 4, 1);
             gr.setColor(Color.white);
-            gr.fillRect(x+60, y+60, 20, 10);
+            gr.fillRect(x+6, y+6, 2, 1);
         }
         if(xv<=0)
         {
             gr.setColor(Color.white);
-            gr.fillRect(x-40, y+30, 20, 10);
+            gr.fillRect(x-4, y+3, 2, 1);
             gr.setColor(c);
-            gr.fillRect(x-20, y+30, 40, 10);
+            gr.fillRect(x-2, y+3, 4, 1);
             gr.setColor(Color.white);   
-            gr.fillRect(x+20, y+30, 20, 10);
+            gr.fillRect(x+2, y+3, 2, 1);
             gr.setColor(c);            
-            gr.fillRect(x+40, y+30, 30, 10);
+            gr.fillRect(x+4, y+3, 3, 1);
 
             gr.setColor(Color.blue);
-            gr.fillRect(x-40, y+40, 20, 20);
+            gr.fillRect(x-4, y+4, 2, 2);
             gr.setColor(Color.white);
-            gr.fillRect(x-20, y+40, 10, 20);
+            gr.fillRect(x-2, y+4, 1, 2);
             gr.setColor(c);
-            gr.fillRect(x-10, y+40, 40, 20);
+            gr.fillRect(x-1, y+4, 4, 2);
             gr.setColor(Color.blue);   
-            gr.fillRect(x+20, y+40, 20, 20);
+            gr.fillRect(x+2, y+4, 2, 2);
             gr.setColor(Color.white);
-            gr.fillRect(x+40, y+40, 10, 20);
+            gr.fillRect(x+4, y+4, 1, 2);
             gr.setColor(c);            
-            gr.fillRect(x+50, y+40, 30, 20);
+            gr.fillRect(x+5, y+4, 3, 2);
 
             gr.setColor(Color.white);
-            gr.fillRect(x-40, y+60, 20, 10);
+            gr.fillRect(x-4, y+6, 2, 1);
             gr.setColor(c);
-            gr.fillRect(x-20, y+60, 40, 10);
+            gr.fillRect(x-2, y+6, 4, 1);
             gr.setColor(Color.white);   
-            gr.fillRect(x+20, y+60, 20, 10);
+            gr.fillRect(x+2, y+6, 2, 1);
             gr.setColor(c);            
-            gr.fillRect(x+40, y+60, 40, 10);
+            gr.fillRect(x+4, y+6, 4, 1);
 
-            gr.setColor(c);   gr.fillRect(x-50, y+50, 10, 80);
-            gr.setColor(c);   gr.fillRect(x+80, y+60, 10, 70);
+            gr.setColor(c);   gr.fillRect(x-5, y+5, 1, 8);
+            gr.setColor(c);   gr.fillRect(x+8, y+6, 1, 7);
 
         }
 
-        gr.setColor(c);   gr.fillRect(x-50, y+70, 130, 40);        
-        gr.setColor(c);   gr.fillRect(x-50, y+110, 10, 20);
-        gr.setColor(c);   gr.fillRect(x-40, y+110, 10, 10);
-        gr.setColor(c);   gr.fillRect(x-20, y+110, 10, 10);
-        gr.setColor(c);   gr.fillRect(x-10, y+110, 20, 20);
-        gr.setColor(c);   gr.fillRect(x+30, y+110, 20, 20);
-        gr.setColor(c);   gr.fillRect(x+50, y+110, 10, 10);
-        gr.setColor(c);   gr.fillRect(x+70, y+110, 10, 10);
+        gr.setColor(c);   gr.fillRect(x-5, y+7, 13, 4);        
+        gr.setColor(c);   gr.fillRect(x-5, y+11, 1, 2);
+        gr.setColor(c);   gr.fillRect(x-4, y+11, 1, 1);
+        gr.setColor(c);   gr.fillRect(x-2, y+11, 1, 1);
+        gr.setColor(c);   gr.fillRect(x-1, y+11, 2, 2);
+        gr.setColor(c);   gr.fillRect(x+3, y+11, 2, 2);
+        gr.setColor(c);   gr.fillRect(x+5, y+11, 1, 1);
+        gr.setColor(c);   gr.fillRect(x+7, y+11, 1, 1);
 
     }
 
@@ -135,30 +136,40 @@ public class Ghosts
         y += yv;    
         
         if(x<0)
-            x=600;
-        if(x>600)
-            x=-7;
+            x=750;//600
+        if(x>750)
+            x=0;
         if(y<0)
-            y=700;
-        if(y>700)
+            y=850;//700
+        if(y>850)
             y=0;
-            r.setLocation(x-50, y);
+            r.setLocation(x-4, y+1);
     }
 
     public void wallGhost()
     {
+        ran1 = (int)(Math.random()*(100)+5);
         if(xv!=0)
         {
-            yv=xv;
-            xv = 0;
+            x-=xv;
+             xv = 0;
+            if(ran1%2==0)
+            { 
+             yv =10;}
+            else
+            {
+             yv=-10;
+            }
         }
-        else
+        if(yv!=0)
         {
-            xv=yv;
-            //xv = (int)(Math.random()*11)-5;
-            yv=0;
+            y-=yv; yv = 0;
+            if(ran1%2==0)
+            { xv = 10;}
+            else
+            {xv = -10;}
         }             
-        r.setLocation(x-50,y);      
+        r.setLocation(x-4,y+1);      
     } 
 }
 
