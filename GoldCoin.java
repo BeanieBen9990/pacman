@@ -11,11 +11,11 @@ public class GoldCoin
     private int x, y;
     private Rectangle r;
     private boolean visible;
-    public GoldCoin(int xx, int yy)
+    public GoldCoin(int x, int y)
     {
         c = Color.yellow;
-        x = xx;
-        y = yy;
+        this.x = x;
+        this.y = y;
         visible = true;
         r = new Rectangle(x, y, 10, 10);
     }
