@@ -10,6 +10,7 @@ public class PackMann
     private Color c;
     private int x, y, arcAngle, xv, yv, mouth;
     private Rectangle r;
+    private boolean movedBack;
     public PackMann(int x, int y)
     {
         c = Color.yellow;
@@ -42,6 +43,7 @@ public class PackMann
         arcAngle += mouth;
         if(arcAngle >360 || arcAngle<320)
             mouth *= -1;
+        this.movedBack = false;
     }
 
     public void move()
@@ -73,8 +75,12 @@ public class PackMann
     public void moveBack() {
         x -= xv;
         y -= yv;
+        this.movedBack = true;
+    }
+    public boolean didMoveBack() {
+        return this.movedBack;
     }
     public void wrapAround() {
-        x = 600 - x;
+        x = 750 - x;
     }
 }

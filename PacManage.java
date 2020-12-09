@@ -14,46 +14,86 @@ public class PacManage extends JFrame implements Runnable, KeyListener
     ArrayList<GoldCoin> coins = new ArrayList<GoldCoin>();
     ArrayList<Rectangle> barriers = new ArrayList<Rectangle>();
     ArrayList<Ghosts> ghosts = new ArrayList<Ghosts>();
+    int xOffset = 25;
+    int yOffset = 50;
+    int coinOffset = 7;
+    int ghostOffset = 0;
+    int gridMultiplier = 25;
     double scale;
     public PacManage()
     {
-        p = new PackMann(600, 600);
+        p = new PackMann(((13)*gridMultiplier)+xOffset, ((17)*gridMultiplier)+yOffset);
+        //add ghost objects
+        //please add ghosts with fitting size and position, as determined by the below instantiation */
+        
+        ghosts.add(new Ghosts(((11)*gridMultiplier)+xOffset, ((11)*gridMultiplier)+yOffset));
         ghosts.add(new Ghosts(100,100));
-        ghosts.add(new Ghosts(400,400));
+        //ghosts.add(new Ghosts(400,400));
         //ghosts.add(new Ghosts(100,100));
         //ghosts.add(new Ghosts(400,400));
-        coins.add(new GoldCoin(70, 70));
-        coins.add(new GoldCoin(100, 70));
-        coins.add(new GoldCoin(130, 70));
-        coins.add(new GoldCoin(160, 70));
-        coins.add(new GoldCoin(190, 70));
-        coins.add(new GoldCoin(220, 70));
-        coins.add(new GoldCoin(250, 70));
-        coins.add(new GoldCoin(280, 70));
-        coins.add(new GoldCoin(310, 70));
-        coins.add(new GoldCoin(340, 70));
-        coins.add(new GoldCoin(370, 70));
-        coins.add(new GoldCoin(400, 70));
-        coins.add(new GoldCoin(430, 70));
-        coins.add(new GoldCoin(460, 70));
-        coins.add(new GoldCoin(490, 70));
-        coins.add(new GoldCoin(520, 70));
-        coins.add(new GoldCoin(520, 100));
-        coins.add(new GoldCoin(520, 130));
-        coins.add(new GoldCoin(520, 160));
-        coins.add(new GoldCoin(520, 190));
-        coins.add(new GoldCoin(520, 220));
-        coins.add(new GoldCoin(520, 250));
-        coins.add(new GoldCoin(70, 100));
-        coins.add(new GoldCoin(70, 130));
-        coins.add(new GoldCoin(70, 160));
-        coins.add(new GoldCoin(70, 190));
-        coins.add(new GoldCoin(70, 220));
-        coins.add(new GoldCoin(70, 250));
+        
+        for (int i = 2; i <= 8; i++) {
+            coins.add(new GoldCoin(((1)*gridMultiplier)+xOffset+coinOffset, ((i)*gridMultiplier)+yOffset+coinOffset));
+        }
+        for (int i = 2; i <= 25; i++) {
+            coins.add(new GoldCoin(((i)*gridMultiplier)+xOffset+coinOffset, ((5)*gridMultiplier)+yOffset+coinOffset));
+        }
+        for (int i = 2; i <= 4; i++) {
+            coins.add(new GoldCoin(((6)*gridMultiplier)+xOffset+coinOffset, ((i)*gridMultiplier)+yOffset+coinOffset));
+        }
 
-        barriers.add(new Rectangle(0,  0, 700, 25));
-        barriers.add(new Rectangle(0,  0, 25,  250));
-        barriers.add(new Rectangle(700,0, 700, 25));
+        // add barrier objects
+        barriers.add(new Rectangle(((0)*gridMultiplier)+xOffset,  ((0)*gridMultiplier)+yOffset,  (28)*gridMultiplier, (1)*gridMultiplier));
+        barriers.add(new Rectangle(((0)*gridMultiplier)+xOffset,  ((0)*gridMultiplier)+yOffset,  (1)*gridMultiplier,  (10)*gridMultiplier));
+        barriers.add(new Rectangle(((27)*gridMultiplier)+xOffset, ((0)*gridMultiplier)+yOffset,  (1)*gridMultiplier,  (10)*gridMultiplier));
+        barriers.add(new Rectangle(((13)*gridMultiplier)+xOffset, ((0)*gridMultiplier)+yOffset,  (2)*gridMultiplier,  (5)*gridMultiplier));
+        barriers.add(new Rectangle(((2)*gridMultiplier)+xOffset,  ((2)*gridMultiplier)+yOffset,  (4)*gridMultiplier,  (3)*gridMultiplier));
+        barriers.add(new Rectangle(((7)*gridMultiplier)+xOffset,  ((2)*gridMultiplier)+yOffset,  (5)*gridMultiplier,  (3)*gridMultiplier));
+        barriers.add(new Rectangle(((16)*gridMultiplier)+xOffset, ((2)*gridMultiplier)+yOffset,  (5)*gridMultiplier,  (3)*gridMultiplier));
+        barriers.add(new Rectangle(((22)*gridMultiplier)+xOffset, ((2)*gridMultiplier)+yOffset,  (4)*gridMultiplier,  (3)*gridMultiplier));
+        barriers.add(new Rectangle(((2)*gridMultiplier)+xOffset,  ((6)*gridMultiplier)+yOffset,  (4)*gridMultiplier,  (2)*gridMultiplier));
+        barriers.add(new Rectangle(((22)*gridMultiplier)+xOffset, ((6)*gridMultiplier)+yOffset,  (4)*gridMultiplier,  (2)*gridMultiplier));
+        barriers.add(new Rectangle(((7)*gridMultiplier)+xOffset,  ((6)*gridMultiplier)+yOffset,  (2)*gridMultiplier,  (8)*gridMultiplier));
+        barriers.add(new Rectangle(((7)*gridMultiplier)+xOffset,  ((9)*gridMultiplier)+yOffset,  (5)*gridMultiplier,  (2)*gridMultiplier));
+        barriers.add(new Rectangle(((19)*gridMultiplier)+xOffset, ((6)*gridMultiplier)+yOffset,  (2)*gridMultiplier,  (8)*gridMultiplier));
+        barriers.add(new Rectangle(((16)*gridMultiplier)+xOffset, ((9)*gridMultiplier)+yOffset,  (5)*gridMultiplier,  (2)*gridMultiplier));
+        barriers.add(new Rectangle(((10)*gridMultiplier)+xOffset, ((6)*gridMultiplier)+yOffset,  (8)*gridMultiplier,  (2)*gridMultiplier));
+        barriers.add(new Rectangle(((13)*gridMultiplier)+xOffset, ((6)*gridMultiplier)+yOffset,  (2)*gridMultiplier,  (5)*gridMultiplier));
+        barriers.add(new Rectangle(((0)*gridMultiplier)+xOffset,  ((9)*gridMultiplier)+yOffset,  (6)*gridMultiplier,  (1)*gridMultiplier));
+        barriers.add(new Rectangle(((5)*gridMultiplier)+xOffset,  ((9)*gridMultiplier)+yOffset,  (1)*gridMultiplier,  (5)*gridMultiplier));
+        barriers.add(new Rectangle(((0)*gridMultiplier)+xOffset,  ((13)*gridMultiplier)+yOffset, (6)*gridMultiplier,  (1)*gridMultiplier));
+        barriers.add(new Rectangle(((7)*gridMultiplier)+xOffset,  ((15)*gridMultiplier)+yOffset, (2)*gridMultiplier,  (5)*gridMultiplier));
+        barriers.add(new Rectangle(((19)*gridMultiplier)+xOffset, ((15)*gridMultiplier)+yOffset, (2)*gridMultiplier,  (5)*gridMultiplier));
+        barriers.add(new Rectangle(((22)*gridMultiplier)+xOffset, ((9)*gridMultiplier)+yOffset,  (6)*gridMultiplier,  (1)*gridMultiplier));
+        barriers.add(new Rectangle(((22)*gridMultiplier)+xOffset, ((9)*gridMultiplier)+yOffset,  (1)*gridMultiplier,  (5)*gridMultiplier));
+        barriers.add(new Rectangle(((22)*gridMultiplier)+xOffset, ((13)*gridMultiplier)+yOffset, (6)*gridMultiplier,  (1)*gridMultiplier));
+        barriers.add(new Rectangle(((10)*gridMultiplier)+xOffset, ((12)*gridMultiplier)+yOffset, (8)*gridMultiplier,  (5)*gridMultiplier));
+        barriers.add(new Rectangle(((10)*gridMultiplier)+xOffset, ((18)*gridMultiplier)+yOffset, (8)*gridMultiplier,  (2)*gridMultiplier));
+        barriers.add(new Rectangle(((13)*gridMultiplier)+xOffset, ((18)*gridMultiplier)+yOffset, (2)*gridMultiplier,  (5)*gridMultiplier));
+        barriers.add(new Rectangle(((0)*gridMultiplier)+xOffset,  ((15)*gridMultiplier)+yOffset, (6)*gridMultiplier,  (1)*gridMultiplier));
+        barriers.add(new Rectangle(((5)*gridMultiplier)+xOffset,  ((15)*gridMultiplier)+yOffset, (1)*gridMultiplier,  (5)*gridMultiplier));
+        barriers.add(new Rectangle(((0)*gridMultiplier)+xOffset,  ((19)*gridMultiplier)+yOffset, (6)*gridMultiplier,  (1)*gridMultiplier));
+        barriers.add(new Rectangle(((0)*gridMultiplier)+xOffset,  ((19)*gridMultiplier)+yOffset, (1)*gridMultiplier,  (12)*gridMultiplier));
+        barriers.add(new Rectangle(((22)*gridMultiplier)+xOffset, ((15)*gridMultiplier)+yOffset, (6)*gridMultiplier,  (1)*gridMultiplier));
+        barriers.add(new Rectangle(((22)*gridMultiplier)+xOffset, ((15)*gridMultiplier)+yOffset, (1)*gridMultiplier,  (5)*gridMultiplier));
+        barriers.add(new Rectangle(((22)*gridMultiplier)+xOffset, ((19)*gridMultiplier)+yOffset, (6)*gridMultiplier,  (1)*gridMultiplier));
+        barriers.add(new Rectangle(((27)*gridMultiplier)+xOffset, ((19)*gridMultiplier)+yOffset, (1)*gridMultiplier,  (12)*gridMultiplier));
+        barriers.add(new Rectangle(((0)*gridMultiplier)+xOffset,  ((30)*gridMultiplier)+yOffset, (28)*gridMultiplier, (1)*gridMultiplier));
+        barriers.add(new Rectangle(((2)*gridMultiplier)+xOffset,  ((21)*gridMultiplier)+yOffset, (4)*gridMultiplier,  (2)*gridMultiplier));
+        barriers.add(new Rectangle(((4)*gridMultiplier)+xOffset,  ((21)*gridMultiplier)+yOffset, (2)*gridMultiplier,  (5)*gridMultiplier));
+        barriers.add(new Rectangle(((7)*gridMultiplier)+xOffset,  ((21)*gridMultiplier)+yOffset, (5)*gridMultiplier,  (2)*gridMultiplier));
+        barriers.add(new Rectangle(((0)*gridMultiplier)+xOffset,  ((24)*gridMultiplier)+yOffset, (3)*gridMultiplier,  (2)*gridMultiplier));
+        barriers.add(new Rectangle(((16)*gridMultiplier)+xOffset, ((21)*gridMultiplier)+yOffset, (5)*gridMultiplier,  (2)*gridMultiplier));
+        barriers.add(new Rectangle(((22)*gridMultiplier)+xOffset, ((21)*gridMultiplier)+yOffset, (4)*gridMultiplier,  (2)*gridMultiplier));
+        barriers.add(new Rectangle(((22)*gridMultiplier)+xOffset, ((21)*gridMultiplier)+yOffset, (2)*gridMultiplier,  (5)*gridMultiplier));
+        barriers.add(new Rectangle(((25)*gridMultiplier)+xOffset, ((24)*gridMultiplier)+yOffset, (3)*gridMultiplier,  (2)*gridMultiplier));
+        barriers.add(new Rectangle(((10)*gridMultiplier)+xOffset, ((24)*gridMultiplier)+yOffset, (8)*gridMultiplier,  (2)*gridMultiplier));
+        barriers.add(new Rectangle(((13)*gridMultiplier)+xOffset, ((24)*gridMultiplier)+yOffset, (2)*gridMultiplier,  (5)*gridMultiplier));
+        barriers.add(new Rectangle(((7)*gridMultiplier)+xOffset,  ((24)*gridMultiplier)+yOffset, (2)*gridMultiplier,  (5)*gridMultiplier));
+        barriers.add(new Rectangle(((2)*gridMultiplier)+xOffset,  ((27)*gridMultiplier)+yOffset, (10)*gridMultiplier, (2)*gridMultiplier));
+        barriers.add(new Rectangle(((19)*gridMultiplier)+xOffset,  ((24)*gridMultiplier)+yOffset, (2)*gridMultiplier,  (5)*gridMultiplier));
+        barriers.add(new Rectangle(((16)*gridMultiplier)+xOffset,  ((27)*gridMultiplier)+yOffset, (10)*gridMultiplier, (2)*gridMultiplier));
+
 
         scale = .5; 
 
@@ -70,23 +110,22 @@ public class PacManage extends JFrame implements Runnable, KeyListener
             {
                 t.sleep(33);//Smaller number == faster, larger == slower
                 p.move();
-                for(int x = 0; x < coins.size(); x++)
-                {
-                    if(p.getR().intersects(coins.get(x).getR()))
-                    {
+                for(int x = 0; x < coins.size(); x++) {
+                    if(p.getR().intersects(coins.get(x).getR())) {
                         coins.get(x).eatCoin();
                     }
                 }
                 for(int x = 0; x < barriers.size(); x++) {
-                    if(p.getR().intersects(barriers.get(x))) {
+                    if(p.getR().intersects(barriers.get(x)) && !p.didMoveBack()) {
                         p.moveBack();
                     }
                 }
-
-                for(int x = 0; x < barriers.size(); x++) {
-                    for(int y = 0; y < ghosts.size(); y++) {
-                        if(ghosts.get(y).getR().intersects(barriers.get(x))) {
-                            ghosts.get(y).wallGhost();
+                if (p.getR().getX() < 0 || p.getR().getX() > 750) {
+                    for(int x = 0; x < barriers.size(); x++) {
+                        for(int y = 0; y < ghosts.size(); y++) {
+                            if(ghosts.get(y).getR().intersects(barriers.get(x))) {
+                                ghosts.get(y).wallGhost();
+                            }
                         }
                     }
                 }
@@ -97,9 +136,14 @@ public class PacManage extends JFrame implements Runnable, KeyListener
                     if(ghosts.get(y).getR().intersects(p.getR())) {
                         System.exit(0);
                     }
-
                 }
-
+                for(int x = 0; x < barriers.size(); x++) {
+                    for(int y = 0; y < ghosts.size(); y++) {
+                        if(ghosts.get(y).getR().intersects(barriers.get(x))) {
+                            ghosts.get(y).wallGhost();
+                        }
+                    }
+                }
                 if (p.getR().getX() < 0 || p.getR().getX() > 600) {
                     p.wrapAround();
                 }
@@ -112,11 +156,21 @@ public class PacManage extends JFrame implements Runnable, KeyListener
         }
     }
 
+    /*
+    public void addCoin(int xCells, int yCells) {
+    for(int coin = 0; coin < coins.size(); coin++) { 
+    if (!(coins.get(coin).equals(GoldCoin(((xCells)*gridMultiplier)+xOffset+coinOffset, ((yCells)*gridMultiplier)+yOffset+coinOffset)))) {
+    coins.add(new GoldCoin(((xCells)*gridMultiplier)+xOffset+coinOffset, ((yCells)*gridMultiplier)+yOffset+coinOffset));
+    }
+    }
+    }
+     */
+
     public void paint(Graphics gr)
     {
         Image i=createImage(getSize().width, getSize().height);
         Graphics2D painter = (Graphics2D)i.getGraphics();
-        painter.fillRect(0, 0, 600, 700);
+        painter.fillRect(0, 0, 750, 850);
         for(int x = 0; x < coins.size(); x++)
         {
             coins.get(x).drawCoin(painter);
@@ -127,12 +181,10 @@ public class PacManage extends JFrame implements Runnable, KeyListener
         {
             painter.draw(barriers.get(x));
         }
-
         for(int x = 0; x < ghosts.size(); x++)
         {           
             ghosts.get(x).drawGhosts(painter);       
         }    
-
         p.drawPacMan(painter);
         painter.dispose();
         gr.drawImage(i, 0, 0, this);
@@ -141,7 +193,7 @@ public class PacManage extends JFrame implements Runnable, KeyListener
     public static void main(String[] args)
     {
         PacManage frame = new PacManage();
-        frame.setSize(600, 700);//determines size of screen
+        frame.setSize(750, 850);//determines size of screen
         frame.setVisible(true);
     }
 
