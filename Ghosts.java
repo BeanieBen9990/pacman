@@ -30,29 +30,45 @@ public class Ghosts
     {
         gr.setColor(c);   
         gr.fillRect(x, y, 30, 10);
-        gr.fillRect(x-20, y, 70, 10);
-        gr.fillRect(x-30, y, 90, 10);
-        gr.fillRect(x-40, y, 40, 10);
-            gr.fillRect(x, y, 20, 10);
-        gr.fillRect(x+20, y, 40, 10);
-            gr.fillRect(x+60, y, 20, 10);
-        gr.fillRect(x-40, y, 30, 10);
-            gr.fillRect(x-10, y, 10, 10);
-                gr.fillRect(x, y, 20, 10);
-        gr.fillRect(x+20, y, 30, 10);
-            gr.fillRect(x+50, y, 10, 10);
-                gr.fillRect(x+60, y, 20, 10);
-         gr.fillRect(x-40, y, 30, 10);
-            gr.fillRect(x-10, y, 10, 10);
-                gr.fillRect(x, y, 20, 10);
-        gr.fillRect(x+20, y, 30, 10);
-            gr.fillRect(x+50, y, 10, 10);
-                gr.fillRect(x+60, y, 20, 10);     
-        gr.fillRect(x-50, y, 40, 10);
-            gr.fillRect(x, y, 20, 10);
-        gr.fillRect(x+20, y, 40, 10);
-            gr.fillRect(x+60, y, 20, 10);
-        gr.fillRect(x-50, y, 130, 40);
+        gr.fillRect(x-20, y+10, 70, 10);
+        gr.fillRect(x-30, y+20, 90, 10);
+        gr.fillRect(x-40, y+30, 40, 10);
+            gr.setColor(Color.white);
+            gr.fillRect(x, y+30, 20, 10);
+        gr.setColor(c);   
+        gr.fillRect(x+20, y+30, 40, 10);
+            gr.setColor(Color.white);
+            gr.fillRect(x+60, y+30, 20, 10);
+        gr.setColor(c);   
+        gr.fillRect(x-40, y+40, 30, 10);
+            gr.setColor(Color.white);
+            gr.fillRect(x-10, y+40, 10, 10);
+                gr.setColor(Color.blue);
+                gr.fillRect(x, y+40, 20, 10);
+        gr.setColor(c);   gr.fillRect(x+20, y+40, 30, 10);
+            gr.setColor(Color.white);
+            gr.fillRect(x+50, y+40, 10, 10);
+                gr.setColor(Color.blue);
+                gr.fillRect(x+60, y+40, 20, 10);
+        gr.setColor(c);   gr.fillRect(x-40, y+50, 30, 10);
+            gr.setColor(Color.white);
+            gr.fillRect(x-10, y+50, 10, 10);
+                gr.setColor(Color.blue);
+                gr.fillRect(x, y+50, 20, 10);
+        gr.setColor(c);   gr.fillRect(x+20, y+50, 30, 10);
+            gr.setColor(Color.white);
+            gr.fillRect(x+50, y+50, 10, 10);
+                gr.setColor(Color.blue);
+                gr.fillRect(x+60, y+50, 20, 10);   
+         gr.setColor(c);   gr.fillRect(x+80, y+50, 10, 90);     
+           
+        gr.setColor(c);   gr.fillRect(x-50, y+60, 50, 10);
+            gr.setColor(Color.white);
+            gr.fillRect(x, y+60, 20, 10);
+        gr.setColor(c);   gr.fillRect(x+20, y+60, 40, 10);
+            gr.setColor(Color.white);
+            gr.fillRect(x+60, y+60, 20, 10);
+        gr.setColor(c);   gr.fillRect(x-50, y+70, 130, 40);
                 
         
         
