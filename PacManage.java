@@ -14,10 +14,12 @@ public class PacManage extends JFrame implements Runnable, KeyListener
     ArrayList<GoldCoin> coins = new ArrayList<GoldCoin>();
     ArrayList<Rectangle> barriers = new ArrayList<Rectangle>();
     ArrayList<Ghosts> ghosts = new ArrayList<Ghosts>();
+    double scale;
     public PacManage()
     {
         p = new PackMann(400, 400);
         ghosts.add(new Ghosts(100,100));
+        ghosts.add(new Ghosts(400,400));
         coins.add(new GoldCoin(70, 70));
         coins.add(new GoldCoin(100, 70));
         coins.add(new GoldCoin(130, 70));
@@ -46,11 +48,13 @@ public class PacManage extends JFrame implements Runnable, KeyListener
         coins.add(new GoldCoin(70, 190));
         coins.add(new GoldCoin(70, 220));
         coins.add(new GoldCoin(70, 250));
-        
+
         barriers.add(new Rectangle(0,  0, 700, 25));
         barriers.add(new Rectangle(0,  0, 25,  250));
         barriers.add(new Rectangle(700,0, 700, 25));
-        
+
+        scale = .5; 
+
         con.setLayout(new FlowLayout());
         addKeyListener(this);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -76,6 +80,18 @@ public class PacManage extends JFrame implements Runnable, KeyListener
                         p.moveBack();
                     }
                 }
+
+                for(int x = 0; x < barriers.size(); x++) {
+                    for(int y = 0; y < ghosts.size(); y++) {
+                        if(ghosts.get(y).getR().intersects(barriers.get(x))) {
+                            ghosts.get(y).wallGhost();
+                        }
+                    }
+                }
+                /*for(int y = 0; y < ghosts.size(); y++) {
+                    ghosts.get(y).move();
+                }*/
+
                 if (p.getR().getX() < 0 || p.getR().getX() > 600) {
                     p.wrapAround();
                 }
@@ -108,7 +124,7 @@ public class PacManage extends JFrame implements Runnable, KeyListener
         {           
             ghosts.get(x).drawGhosts(painter);       
         }    
-        
+
         p.drawPacMan(painter);
         painter.dispose();
         gr.drawImage(i, 0, 0, this);
