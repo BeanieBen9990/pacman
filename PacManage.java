@@ -1,3 +1,4 @@
+
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
@@ -94,7 +95,6 @@ public class PacManage extends JFrame implements Runnable, KeyListener
         barriers.add(new Rectangle(((16)*gridMultiplier)+xOffset,  ((27)*gridMultiplier)+yOffset, (10)*gridMultiplier, (2)*gridMultiplier));
 
 
-
         scale = .5; 
 
         con.setLayout(new FlowLayout());
@@ -135,6 +135,13 @@ public class PacManage extends JFrame implements Runnable, KeyListener
                 for(int y = 0; y < ghosts.size(); y++) {
                     if(ghosts.get(y).getR().intersects(p.getR())) {
                         System.exit(0);
+                    }
+                }
+                for(int x = 0; x < barriers.size(); x++) {
+                    for(int y = 0; y < ghosts.size(); y++) {
+                        if(ghosts.get(y).getR().intersects(barriers.get(x))) {
+                            ghosts.get(y).wallGhost();
+                        }
                     }
                 }
                 if (p.getR().getX() < 0 || p.getR().getX() > 600) {
