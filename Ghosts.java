@@ -149,13 +149,14 @@ public class Ghosts
     {
         if(xv!=0)
         {
-            xv=0;
-            yv = (int)(Math.random()*11)-5;
+            yv=xv;
+            xv = 0;
         }
         else
         {
+            xv=yv;
+            //xv = (int)(Math.random()*11)-5;
             yv=0;
-            xv = (int)(Math.random()*11)-5;
         }             
         r.setLocation(x-50,y);      
     } 
