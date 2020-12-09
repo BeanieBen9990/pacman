@@ -1,4 +1,4 @@
-
+//Testing
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
@@ -13,9 +13,11 @@ public class PacManage extends JFrame implements Runnable, KeyListener
     PackMann p;
     ArrayList<GoldCoin> coins = new ArrayList<GoldCoin>();
     ArrayList<Rectangle> barriers = new ArrayList<Rectangle>();
+    ArrayList<Ghosts> ghosts = new ArrayList<Ghosts>();
     public PacManage()
     {
         p = new PackMann(400, 400);
+        ghosts.add(new Ghosts(100,100));
         coins.add(new GoldCoin(70, 70));
         coins.add(new GoldCoin(100, 70));
         coins.add(new GoldCoin(130, 70));
@@ -102,6 +104,11 @@ public class PacManage extends JFrame implements Runnable, KeyListener
             painter.draw(barriers.get(x));
         }
 
+        for(int x = 0; x < ghosts.size(); x++)
+        {           
+            ghosts.get(x).drawGhosts(painter);       
+        }    
+        
         p.drawPacMan(painter);
         painter.dispose();
         gr.drawImage(i, 0, 0, this);
