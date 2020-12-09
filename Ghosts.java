@@ -60,7 +60,7 @@ public class Ghosts
             gr.fillRect(x+50, y+50, 10, 10);
                 gr.setColor(Color.blue);
                 gr.fillRect(x+60, y+50, 20, 10);   
-         gr.setColor(c);   gr.fillRect(x+80, y+50, 10, 90);     
+         gr.setColor(c);   gr.fillRect(x+80, y+50, 10, 80);     
            
         gr.setColor(c);   gr.fillRect(x-50, y+60, 50, 10);
             gr.setColor(Color.white);
@@ -69,6 +69,14 @@ public class Ghosts
             gr.setColor(Color.white);
             gr.fillRect(x+60, y+60, 20, 10);
         gr.setColor(c);   gr.fillRect(x-50, y+70, 130, 40);
+        
+        gr.setColor(c);   gr.fillRect(x-50, y+110, 10, 20);
+        gr.setColor(c);   gr.fillRect(x-40, y+110, 10, 10);
+        gr.setColor(c);   gr.fillRect(x-20, y+110, 10, 10);
+        gr.setColor(c);   gr.fillRect(x-10, y+110, 20, 20);
+        gr.setColor(c);   gr.fillRect(x+30, y+110, 20, 20);
+        gr.setColor(c);   gr.fillRect(x+50, y+110, 10, 10);
+        gr.setColor(c);   gr.fillRect(x+70, y+110, 10, 10);
                 
         
         
