@@ -1,8 +1,4 @@
-//<<<<<<< HEAD
-//Testing
-//=======
-/* ioweuhwioeufhowefuhweofuh */
-//>>>>>>> 8f664d920084ca7d3e8745988c995e7c57f27ef9
+
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
