@@ -29,7 +29,7 @@ public class Ghosts
             xv = 0;
         }     
 
-        r = new Rectangle(x-5, y, 14, 13);
+        r = new Rectangle(x-4, y+1, 13, 12);
     }
 
     public Rectangle getR()  
@@ -136,14 +136,14 @@ public class Ghosts
         y += yv;    
         
         if(x<0)
-            x=600;//600
-        if(x>600)
-            x=-7;
+            x=750;//600
+        if(x>750)
+            x=0;
         if(y<0)
-            y=700;//700
-        if(y>700)
+            y=850;//700
+        if(y>850)
             y=0;
-            r.setLocation(x-5, y);
+            r.setLocation(x-4, y+1);
     }
 
     public void wallGhost()
@@ -151,25 +151,25 @@ public class Ghosts
         ran1 = (int)(Math.random()*(100)+5);
         if(xv!=0)
         {
+            x-=xv;
+             xv = 0;
             if(ran1%2==0)
-            {x-=xv;
-             xv = 0; 
+            { 
              yv =10;}
             else
             {
-                x-=xv;
-                xv = 0;
              yv=-10;
             }
         }
         if(yv!=0)
         {
+            y-=yv; yv = 0;
             if(ran1%2==0)
-            {y-=yv; yv = 0; xv = 10;}
+            { xv = 10;}
             else
-            {y-=yv; yv = 0; xv = -10;}
+            {xv = -10;}
         }             
-        r.setLocation(x-5,y);      
+        r.setLocation(x-4,y+1);      
     } 
 }
 
