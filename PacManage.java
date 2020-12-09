@@ -146,7 +146,7 @@ public class PacManage extends JFrame implements Runnable, KeyListener
                     }
                 }
                 
-                if (p.getR().getX() < 0 || p.getR().getX() > 600) {
+                if (p.getR().getX() < 0 || p.getR().getX() > 750) {
                     p.wrapAround();
                 }
                 repaint();
