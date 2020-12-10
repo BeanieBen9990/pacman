@@ -20,7 +20,7 @@ public class PackMann
         yv = 0;
         mouth = 6;
         arcAngle = 321;
-        r = new Rectangle(x+2, y+2, 16, 16);
+        r = new Rectangle(x+2, y+2, 17, 17);
     }
 
     public Rectangle getR()
@@ -81,6 +81,10 @@ public class PackMann
         return this.movedBack;
     }
     public void wrapAround() {
-        x = 750 - x;
+        //x = 750 - x;
+        if(x<20)
+        {x=720;}
+        if(x>720)
+        {x=20;}
     }
 }
