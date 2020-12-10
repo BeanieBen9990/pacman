@@ -21,14 +21,18 @@ public class Ghosts
         
         if(ran % 2 ==0)
         { 
-            xv = ((int)(Math.random()*21)-9)+1;
+            xv = ((int)(Math.random()*21)-10);           
             yv = 0;
         }
         else
         {        
-            yv = ((int)(Math.random()*21)-9)+1;
+            yv = ((int)(Math.random()*21)-10);
             xv = 0;
-        }     
+        }   
+        if((ran % 2 ==0) && (xv==0))
+        {xv = ((int)(Math.random()*21)-10);}
+        if(ran % 2 !=0 && (yv==0))
+        {yv = ((int)(Math.random()*21)-10);}
 
         r = new Rectangle(x, y+5, 2, 2);
     }
@@ -152,7 +156,7 @@ public class Ghosts
         ran1 = (int)(Math.random()*(100)+5);
         if(xv!=0)
         {
-            x-=(xv*1.2);
+            x-=(xv*1.22);
              xv = 0;
             if(ran1%2==0)
             { 
@@ -164,7 +168,7 @@ public class Ghosts
         }
         else
         {
-            y-=(yv*1.2); 
+            y-=(yv*1.22); 
             yv = 0;
             if(ran1%2==0)
             { xv = 10;}
