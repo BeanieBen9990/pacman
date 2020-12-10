@@ -20,7 +20,7 @@ public class PackMann
         yv = 0;
         mouth = 6;
         arcAngle = 321;
-        r = new Rectangle(x, y, 25, 25);
+        r = new Rectangle(x+2, y+2, 18, 18);
     }
 
     public Rectangle getR()
@@ -50,7 +50,7 @@ public class PackMann
     {
         x += xv;
         y += yv;
-        r.setLocation(x, y);
+        r.setLocation(x+2, y+2);
     }
 
     public void moveUp(){

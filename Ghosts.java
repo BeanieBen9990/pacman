@@ -8,8 +8,9 @@ import javax.sound.sampled.*;
 public class Ghosts
 {
     private Color c;    
-    private int x, y, xv, yv;   
-    int ran, ran1;
+    private int x, y;
+    private double xv, yv;   
+    private int ran, ran1;
     private Rectangle r;  
     public Ghosts(int xx, int yy)
     {  
@@ -20,16 +21,16 @@ public class Ghosts
         
         if(ran % 2 ==0)
         { 
-            xv = (int)(Math.random()*21)-10;
+            xv = ((int)(Math.random()*21)-9)+1;
             yv = 0;
         }
         else
         {        
-            yv = (int)(Math.random()*21)-10;
+            yv = ((int)(Math.random()*21)-9)+1;
             xv = 0;
         }     
 
-        r = new Rectangle(x-4, y+1, 13, 12);
+        r = new Rectangle(x, y+5, 2, 2);
     }
 
     public Rectangle getR()  
@@ -143,7 +144,7 @@ public class Ghosts
             y=850;//700
         if(y>850)
             y=0;
-            r.setLocation(x-4, y+1);
+            r.setLocation(x, y+5);
     }
 
     public void wallGhost()
@@ -151,7 +152,7 @@ public class Ghosts
         ran1 = (int)(Math.random()*(100)+5);
         if(xv!=0)
         {
-            x-=xv;
+            x-=(xv*1.1);
              xv = 0;
             if(ran1%2==0)
             { 
@@ -161,15 +162,16 @@ public class Ghosts
              yv=-10;
             }
         }
-        if(yv!=0)
+        else
         {
-            y-=yv; yv = 0;
+            y-=(yv*1.1); 
+            yv = 0;
             if(ran1%2==0)
             { xv = 10;}
             else
             {xv = -10;}
         }             
-        r.setLocation(x-4,y+1);      
+        r.setLocation(x, y+5);      
     } 
 }
 

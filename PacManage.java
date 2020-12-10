@@ -27,9 +27,9 @@ public class PacManage extends JFrame implements Runnable, KeyListener
         
         ghosts.add(new Ghosts(((11)*gridMultiplier)+xOffset, ((11)*gridMultiplier)+yOffset));
         ghosts.add(new Ghosts(100,100));
-        //ghosts.add(new Ghosts(400,400));
-        //ghosts.add(new Ghosts(100,100));
-        //ghosts.add(new Ghosts(400,400));
+        ghosts.add(new Ghosts(400,400));
+        ghosts.add(new Ghosts(100,100));
+        ghosts.add(new Ghosts(400,400));
         
         for (int i = 2; i <= 8; i++) {
             coins.add(new GoldCoin(((1)*gridMultiplier)+xOffset+coinOffset, ((i)*gridMultiplier)+yOffset+coinOffset));
