@@ -24,13 +24,13 @@ public class PacManage extends JFrame implements Runnable, KeyListener
         p = new PackMann(((13)*gridMultiplier)+xOffset, ((17)*gridMultiplier)+yOffset);
         //add ghost objects
         //please add ghosts with fitting size and position, as determined by the below instantiation */
-        
+
         ghosts.add(new Ghosts(((11)*gridMultiplier)+xOffset, ((11)*gridMultiplier)+yOffset));
         ghosts.add(new Ghosts(100,100));
         ghosts.add(new Ghosts(400,400));
         ghosts.add(new Ghosts(100,100));
         ghosts.add(new Ghosts(400,400));
-        
+
         for (int i = 2; i <= 8; i++) {
             coins.add(new GoldCoin(((1)*gridMultiplier)+xOffset+coinOffset, ((i)*gridMultiplier)+yOffset+coinOffset));
         }
@@ -93,9 +93,7 @@ public class PacManage extends JFrame implements Runnable, KeyListener
         barriers.add(new Rectangle(((19)*gridMultiplier)+xOffset,  ((24)*gridMultiplier)+yOffset, (2)*gridMultiplier,  (5)*gridMultiplier));
         barriers.add(new Rectangle(((16)*gridMultiplier)+xOffset,  ((27)*gridMultiplier)+yOffset, (10)*gridMultiplier, (2)*gridMultiplier));
 
-
         scale = .5; 
-
         con.setLayout(new FlowLayout());
         addKeyListener(this);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -128,7 +126,7 @@ public class PacManage extends JFrame implements Runnable, KeyListener
                         }
                     }
                 }
-                
+
                 for(int y = 0; y < ghosts.size(); y++) {
                     ghosts.get(y).move();
                 }
@@ -145,11 +143,13 @@ public class PacManage extends JFrame implements Runnable, KeyListener
                         }
                     }
                 }
-                
+
                 if (p.getR().getX() < 0 || p.getR().getX() > 750) {
                     p.wrapAround();
                 }
+                //add for(int x = 0; x < coins.size(); x++) {if all the coins dissapeared, then System.exit(0);}
                 repaint();
+
             }
         }
         catch(Exception e)
