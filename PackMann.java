@@ -20,7 +20,7 @@ public class PackMann
         yv = 0;
         mouth = 6;
         arcAngle = 321;
-        r = new Rectangle(x+2, y+2, 18, 18);
+        r = new Rectangle(x+2, y+2, 16, 16);
     }
 
     public Rectangle getR()
