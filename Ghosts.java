@@ -170,10 +170,10 @@ public class Ghosts
              xv = 0;
             if(ran1%2==0)
             { 
-             yv =10;}
+             yv =7;}
             else
             {
-             yv=-10;
+             yv=-7;
             }
         }
         else
@@ -181,9 +181,9 @@ public class Ghosts
             y-=(yv*1.22); 
             yv = 0;
             if(ran1%2==0)
-            { xv = 10;}
+            { xv = 7;}
             else
-            {xv = -10;}
+            {xv = -7;}
         }             
         r.setLocation(x, y+5);      
     } 
