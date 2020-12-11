@@ -179,7 +179,7 @@ public class Ghosts
         ran1 = (int)(Math.random()*(100)+5);
         if(xv!=0)
         {
-            x-=(xv*1.23);
+            x-=(xv*1.3);
             xv = 0;
             if(ran1%2==0)
             { 
@@ -191,7 +191,7 @@ public class Ghosts
         }
         else
         {
-            y-=(yv*1.23); 
+            y-=(yv*1.3); 
             yv = 0;
             if(ran1%2==0)
             { xv = 7;}
