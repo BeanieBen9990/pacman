@@ -7,7 +7,7 @@ import java.net.URL;
 import javax.sound.sampled.*;
 public class Ghosts
 {
-    private Color c, cpp;    
+    private Color c, rc, cpp;    
     private int x, y;
     private double xv, yv;   
     private int ran, ran1;
@@ -15,8 +15,8 @@ public class Ghosts
     private boolean pp;
     public Ghosts(int x, int y)
     {  
-        c = new Color((int)(Math.random()*(216)+39),(int)(Math.random()*(216)+39),(int)(Math.random()*(216)+39)); 
-        cpp = new Color(70, 165, 238);
+        rc = new Color((int)(Math.random()*(216)+39),(int)(Math.random()*(216)+39),(int)(Math.random()*(216)+39)); 
+        cpp = new Color(70, 165, 238);        
         this.x = x;  
         this.y = y;    
         ran = (int)(Math.random()*(100)+5);
@@ -44,6 +44,7 @@ public class Ghosts
     {       
         return r;  
     }
+
     public Rectangle getR2()  
     {       
         return r2;  
@@ -52,9 +53,13 @@ public class Ghosts
     public void drawGhosts(Graphics2D gr)    
     {
         if(pp == false)
-        {gr.setColor(c);}
+        {   c = rc;
+            gr.setColor(c);
+        }
         if(pp == true)
-        {gr.setColor(cpp);}
+        {   c = cpp;           
+        }
+        gr.setColor(c);
         gr.fillRect(x, y, 3, 1);
         gr.fillRect(x-2, y+1, 7, 1);
         gr.fillRect(x-3, y+2, 9, 1);
@@ -149,7 +154,7 @@ public class Ghosts
     {
         x += xv;    
         y += yv;    
-        
+
         if(x<0)
             x=750;//600
         if(x>750)
@@ -158,7 +163,15 @@ public class Ghosts
             y=850;//700
         if(y>850)
             y=0;
+        if(pp==false)
+        {
             r.setLocation(x, y+5);
+        }
+           
+        if(pp==true)
+        {
+            r2.setLocation(x, y+5);
+        }
     }
 
     public void wallGhost()
@@ -166,33 +179,50 @@ public class Ghosts
         ran1 = (int)(Math.random()*(100)+5);
         if(xv!=0)
         {
-            x-=(xv*1.22);
-             xv = 0;
+            x-=(xv*1.23);
+            xv = 0;
             if(ran1%2==0)
             { 
-             yv =7;}
+                yv =7;}
             else
             {
-             yv=-7;
+                yv=-7;
             }
         }
         else
         {
-            y-=(yv*1.22); 
+            y-=(yv*1.23); 
             yv = 0;
             if(ran1%2==0)
             { xv = 7;}
             else
             {xv = -7;}
         }             
-        r.setLocation(x, y+5);      
+        if(pp==false)
+        {
+            r.setLocation(x, y+5);
+        }           
+        if(pp==true)
+        {
+            r2.setLocation(x, y+5);
+        }     
     } 
-    
+
     public void ppActive()
     {
-        r2.setLocation(x, y+5);
-        r.setLocation(-10, -10);
+        //r2.setLocation(x, y+5);
+        r.setLocation(-1000, -1000);
         pp = true;
+    }
+    //
+
+    public void center()
+    {
+        pp = false;
+        //r.setLocation(x, y+5);
+        r2.setLocation(-1000, -1000);
+        x= 350;
+        y=350;
     }
 }
 
