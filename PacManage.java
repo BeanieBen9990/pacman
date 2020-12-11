@@ -266,7 +266,7 @@ public class PacManage extends JFrame implements Runnable, KeyListener
                 for(int x = 0; x < pellets.size(); x++) {
                     if(p.getR().intersects(pellets.get(x).getR())) {
                         pellets.get(x).eatCoin();
-                        //ghosts.get(y).ppActive();
+                        ghosts.get(y).ppActive();
                     }
                 }
             }
