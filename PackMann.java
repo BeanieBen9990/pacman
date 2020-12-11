@@ -20,7 +20,7 @@ public class PackMann
         yv = 0;
         mouth = 6;
         arcAngle = 321;
-        r = new Rectangle(x+2, y+2, 17, 17);
+        r = new Rectangle(x, y, 17, 17);
     }
 
     public Rectangle getR()
@@ -32,13 +32,13 @@ public class PackMann
     {
         gr.setColor(c);
         if(xv>0)
-            gr.fillArc(x, y, 25, 25, 0, arcAngle);
+            gr.fillArc(x-2, y-2, 25, 25, 0, arcAngle);
         if(xv<0)
-            gr.fillArc(x, y, 25, 25, 180, arcAngle);
+            gr.fillArc(x-2, y-2, 25, 25, 180, arcAngle);
         if(yv>0)
-            gr.fillArc(x, y, 25, 25, 270, arcAngle);
+            gr.fillArc(x-2, y-2, 25, 25, 270, arcAngle);
         if(yv<0)
-            gr.fillArc(x, y, 25, 25, 90, arcAngle);
+            gr.fillArc(x-2, y-2, 25, 25, 90, arcAngle);
 
         arcAngle += mouth;
         if(arcAngle >360 || arcAngle<320)
@@ -50,7 +50,7 @@ public class PackMann
     {
         x += xv;
         y += yv;
-        r.setLocation(x+2, y+2);
+        r.setLocation(x, y);
     }
 
     public void moveUp(){
@@ -81,10 +81,11 @@ public class PackMann
         return this.movedBack;
     }
     public void wrapAround() {
-        //x = 750 - x;
-        if(x<20)
-        {x=720;}
-        if(x>720)
-        {x=20;}
+        //for whole screen wrap around
+        //x = 750 - x
+        //for partial screen wrap around
+        x = (720 - x)+20;
+        
+        //NOTE: uncommented line here must match line in Pacmanage
     }
 }

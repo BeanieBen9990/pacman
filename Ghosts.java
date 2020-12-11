@@ -12,11 +12,11 @@ public class Ghosts
     private double xv, yv;   
     private int ran, ran1;
     private Rectangle r;  
-    public Ghosts(int xx, int yy)
+    public Ghosts(int x, int y)
     {  
         c = new Color((int)(Math.random()*(216)+39),(int)(Math.random()*(216)+39),(int)(Math.random()*(216)+39)); 
-        x = xx;  
-        y = yy;    
+        this.x = x;  
+        this.y = y;    
         ran = (int)(Math.random()*(100)+5);
         
         if(ran % 2 ==0)
@@ -30,9 +30,9 @@ public class Ghosts
             xv = 0;
         }   
         if((ran % 2 ==0) && (xv==0))
-        {xv = ((int)(Math.random()*21)-10);}
+        {xv = ((int)(Math.random()*11)-5);}
         if(ran % 2 !=0 && (yv==0))
-        {yv = ((int)(Math.random()*21)-10);}
+        {yv = ((int)(Math.random()*11)-5);}
 
         r = new Rectangle(x, y+5, 2, 2);
     }
