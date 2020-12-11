@@ -198,7 +198,7 @@ public class Ghosts
             else
             {xv = -7;}
         }            
-
+        
         if(pp==false)
         {
             r.setLocation(x, y+5);
@@ -206,8 +206,10 @@ public class Ghosts
         if(pp==true)
         {
             r2.setLocation(x, y+5);            
-        }    
-
+        }
+        
+        // if(pp) { r2.setLocation(x, y+5);} else {r.setLocation(x, y+5);} //this is a little better
+        
     } 
 
     public void ppActive()
