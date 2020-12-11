@@ -33,7 +33,7 @@ public class PacManage extends JFrame implements Runnable, KeyListener
         //
         //add ghost objects
         //please add ghosts with fitting size and position, as determined by the below instantiation */
-        ghosts.add(new Ghosts(((11)*gridMultiplier)+xOffset, ((11)*gridMultiplier)+yOffset));//(300,325)
+        ghosts.add(new Ghosts(((11)*gridMultiplier)+xOffset, ((11)*gridMultiplier)+yOffset));//(300,325) The working ghost
         ghosts.add(new Ghosts(((3)*gridMultiplier)+xOffset, ((2)*gridMultiplier)+yOffset));//(100,100)
         ghosts.add(new Ghosts(((3)*gridMultiplier)+xOffset,((2)*gridMultiplier)+yOffset));
         ghosts.add(new Ghosts(((15)*gridMultiplier)+xOffset,((14)*gridMultiplier)+yOffset));//(400,400)       
