@@ -17,6 +17,7 @@ public class PacManage extends JFrame implements Runnable, KeyListener
     ArrayList<powerCoin> pellets = new ArrayList<powerCoin>();
     int coinCounter = 0;
     double scale;
+    
 
     //give names to common integers for comprehension
     int xOffset = 25;

@@ -7,18 +7,20 @@ import java.net.URL;
 import javax.sound.sampled.*;
 public class Ghosts
 {
-    private Color c;    
+    private Color c, cpp;    
     private int x, y;
     private double xv, yv;   
     private int ran, ran1;
-    private Rectangle r;  
+    private Rectangle r, r2;  
+    private boolean pp;
     public Ghosts(int x, int y)
     {  
         c = new Color((int)(Math.random()*(216)+39),(int)(Math.random()*(216)+39),(int)(Math.random()*(216)+39)); 
+        cpp = new Color(70, 165, 238);
         this.x = x;  
         this.y = y;    
         ran = (int)(Math.random()*(100)+5);
-        
+        pp = false;
         if(ran % 2 ==0)
         { 
             xv = ((int)(Math.random()*21)-10);           
@@ -34,17 +36,25 @@ public class Ghosts
         if(ran % 2 !=0 && (yv==0))
         {yv = ((int)(Math.random()*11)-5);}
 
-        r = new Rectangle(x, y+5, 2, 2);
+        r = new Rectangle(x-1, y+4, 3, 3);
+        r2= new Rectangle(-10, -10, 3, 3);
     }
 
     public Rectangle getR()  
     {       
         return r;  
     }
+    public Rectangle getR2()  
+    {       
+        return r2;  
+    }
 
     public void drawGhosts(Graphics2D gr)    
     {
-        gr.setColor(c);   
+        if(pp == false)
+        {gr.setColor(c);}
+        if(pp == true)
+        {gr.setColor(cpp);}
         gr.fillRect(x, y, 3, 1);
         gr.fillRect(x-2, y+1, 7, 1);
         gr.fillRect(x-3, y+2, 9, 1);
@@ -177,5 +187,12 @@ public class Ghosts
         }             
         r.setLocation(x, y+5);      
     } 
+    
+    public void ppActive()
+    {
+        r2.setLocation(x, y+5);
+        r.setLocation(-10, -10);
+        pp = true;
+    }
 }
 
