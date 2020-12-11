@@ -33,12 +33,11 @@ public class PacManage extends JFrame implements Runnable, KeyListener
         //
         //add ghost objects
         //please add ghosts with fitting size and position, as determined by the below instantiation */
-        ghosts.add(new Ghosts(((11)*gridMultiplier)+xOffset, ((11)*gridMultiplier)+yOffset));
-        ghosts.add(new Ghosts(100,100));
-        //ghosts.add(new Ghosts(((3)*gridMultiplier)+xOffset,((3)*gridMultiplier)+yOffset));
-        ghosts.add(new Ghosts(400,400));
-        ghosts.add(new Ghosts(100,100));
-        ghosts.add(new Ghosts(400,400));
+        ghosts.add(new Ghosts(((11)*gridMultiplier)+xOffset, ((11)*gridMultiplier)+yOffset));//(300,325)
+        ghosts.add(new Ghosts(((3)*gridMultiplier)+xOffset, ((2)*gridMultiplier)+yOffset));//(100,100)
+        ghosts.add(new Ghosts(((3)*gridMultiplier)+xOffset,((2)*gridMultiplier)+yOffset));
+        ghosts.add(new Ghosts(((15)*gridMultiplier)+xOffset,((14)*gridMultiplier)+yOffset));//(400,400)       
+        ghosts.add(new Ghosts(((15)*gridMultiplier)+xOffset,((14)*gridMultiplier)+yOffset));
 
         //add power pellet objects
         pellets.add(new powerCoin(((1)*gridMultiplier)+xOffset+pelletOffset,  ((4)*gridMultiplier)+xOffset+pelletOffset));
@@ -249,6 +248,10 @@ public class PacManage extends JFrame implements Runnable, KeyListener
                         {
                             ghosts.get(y).wallGhost();
                         }
+                        if(ghosts.get(y).getR2().intersects(barriers.get(x))) 
+                        {
+                            ghosts.get(y).wallGhost();
+                        }
                     }
                 }
 
@@ -262,22 +265,24 @@ public class PacManage extends JFrame implements Runnable, KeyListener
                         }
                     }
                 }
-                for(int y = 0; y < ghosts.size(); y++) 
-                {
-                    for(int x = 0; x < pellets.size(); x++) {
-                        if(p.getR().intersects(pellets.get(x).getR())) {
+
+                for(int x = 0; x < pellets.size(); x++) {
+                    for(int y = 0; y < ghosts.size(); y++) 
+                    {
+                        if(p.getR().intersects(pellets.get(x).getR())) 
+                        {
                             pellets.get(x).eatCoin();
                             ghosts.get(y).ppActive();
                         }
                     }
                 }
-                 for(int y = 0; y < ghosts.size(); y++) 
+                for(int y = 0; y < ghosts.size(); y++) 
                 {
                     if(p.getR().intersects(ghosts.get(y).getR2()))
                     {
                         score+=100;
                         ghosts.get(y).center();
-                    }                    
+                    }                
                 }
 
                 //check collision with pacman/ghosts and barrier 
