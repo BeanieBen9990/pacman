@@ -75,22 +75,22 @@ public class Ghosts
             gr.fillRect(x-4, y+4, 3, 1);
             gr.setColor(Color.white);
             gr.fillRect(x-1, y+4, 1, 1);
-            gr.setColor(Color.blue); if(pp == true){gr.setColor(Color.white);}
+            gr.setColor(Color.blue); if(pp){gr.setColor(Color.white);}
             gr.fillRect(x, y+4, 2, 1);
             gr.setColor(c);   gr.fillRect(x+2, y+4, 3, 1);
             gr.setColor(Color.white);
             gr.fillRect(x+5, y+4, 1, 1);
-            gr.setColor(Color.blue); if(pp == true){gr.setColor(Color.white);}
+            gr.setColor(Color.blue); if(pp){gr.setColor(Color.white);}
             gr.fillRect(x+6, y+4, 2, 1);
             gr.setColor(c);   gr.fillRect(x-4, y+5, 3, 1);
             gr.setColor(Color.white);
             gr.fillRect(x-1, y+5, 1, 1);
-            gr.setColor(Color.blue); if(pp == true){gr.setColor(Color.white);}
+            gr.setColor(Color.blue); if(pp){gr.setColor(Color.white);}
             gr.fillRect(x, y+5, 2, 1);
             gr.setColor(c);   gr.fillRect(x+2, y+5, 3, 1);
             gr.setColor(Color.white);
             gr.fillRect(x+5, y+5, 1, 1);
-            gr.setColor(Color.blue); if(pp == true){gr.setColor(Color.white);}
+            gr.setColor(Color.blue); if(pp){gr.setColor(Color.white);}
             gr.fillRect(x+6, y+5, 2, 1);   
             gr.setColor(c);   gr.fillRect(x+8, y+5, 1, 8);     
 
@@ -112,13 +112,13 @@ public class Ghosts
             gr.setColor(c);            
             gr.fillRect(x+4, y+3, 3, 1);
 
-            gr.setColor(Color.blue); if(pp == true){gr.setColor(Color.white);}
+            gr.setColor(Color.blue); if(pp){gr.setColor(Color.white);}
             gr.fillRect(x-4, y+4, 2, 2);
             gr.setColor(Color.white);
             gr.fillRect(x-2, y+4, 1, 2);
             gr.setColor(c);
             gr.fillRect(x-1, y+4, 4, 2);
-            gr.setColor(Color.blue);   if(pp == true){gr.setColor(Color.white);}
+            gr.setColor(Color.blue);   if(pp){gr.setColor(Color.white);}
             gr.fillRect(x+2, y+4, 2, 2);
             gr.setColor(Color.white);
             gr.fillRect(x+4, y+4, 1, 2);
@@ -155,22 +155,17 @@ public class Ghosts
         x += xv;    
         y += yv;    
 
-        if(x<0)
-            x=750;//600
-        if(x>750)
-            x=0;
-        if(y<0)
-            y=850;//700
-        if(y>850)
-            y=0;
-        if(pp==false)
-        {
-            r.setLocation(x, y+5);
-        }
+        //is this necessary?
+        if(x<0 || x>750)
+            x = 750 - x;//600
+        if(y<0 || y>850)
+            y= 850 - y;//700
 
-        if(pp==true)
+        if(pp)
         {
             r2.setLocation(x, y+5);
+        } else {
+            r.setLocation(x, y+5);
         }
     }
 
