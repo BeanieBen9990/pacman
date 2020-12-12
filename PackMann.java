@@ -50,7 +50,7 @@ public class PackMann
     {
         x += xv;
         y += yv;
-        r.setLocation(x+2, y+2);
+        r.setLocation(x, y); //please don't change this it breaks wrap around
     }
 
     public void moveUp(){
